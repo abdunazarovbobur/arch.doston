@@ -97,11 +97,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 1001; /* Logo doim ustda turishi uchun */
+            z-index: 1001;
         }
 
         .logo-img {
-            height: 40px; /* Biroz kichraytirildi mobil uchun qulay bo'lishi uchun */
+            height: 40px;
             width: auto;
         }
 
@@ -144,7 +144,6 @@
             color: #ccc;
         }
 
-        /* Mobil Menu Tugmasi */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -161,7 +160,6 @@
             border-radius: 2px;
         }
 
-        /* Gamburger animatsiyasi */
         .menu-toggle.open .bar:nth-child(1) {
             transform: rotate(45deg) translate(5px, 6px);
         }
@@ -179,7 +177,7 @@
         header {
             width: 100%;
             height: 100vh;
-            min-height: 600px; /* Juda kichik ekranlarda siqilib qolmasligi uchun */
+            min-height: 600px;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80');
             background-size: cover;
             background-position: center;
@@ -313,8 +311,7 @@
             color: var(--text-white);
             letter-spacing: 2px;
             position: relative;
-            /* Center fix */
-            width: 100%; 
+            width: 100%;
         }
 
         .section-title::after {
@@ -432,7 +429,7 @@
             color: #ccc;
         }
 
-        /* --- TEAM (CSS MARQUEE) --- */
+        /* --- TEAM (CHEKSIZ CAROUSEL SOZLAMALARI) --- */
         .team-section {
             padding: 60px 0;
             background-color: var(--dark-light);
@@ -442,14 +439,22 @@
         .marquee-container {
             width: 100%;
             overflow: hidden;
-            white-space: nowrap;
             padding: 40px 0;
         }
 
         .marquee-content {
-            display: inline-flex;
+            display: flex;
+            /* Cheksiz aylanish uchun flex */
             gap: 20px;
-            animation: scroll 20s linear infinite;
+            width: max-content;
+            /* Kontent kengligini avtomat belgilash */
+            animation: scroll 30s linear infinite;
+            /* 30 sekundda bir to'liq aylanish */
+        }
+
+        /* Sichqoncha olib borilganda to'xtashi uchun (ixtiyoriy) */
+        .marquee-content:hover {
+            animation-play-state: paused;
         }
 
         .team-member {
@@ -459,7 +464,7 @@
             overflow: hidden;
             position: relative;
             flex-shrink: 0;
-            background-color: #222; /* Rasm yuklanguncha fon */
+            background-color: #222;
         }
 
         .team-member img {
@@ -474,8 +479,15 @@
         }
 
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+            /* Faqat 50% suriladi chunki kontent dublikat qilingan */
         }
 
         /* --- STATS --- */
@@ -507,7 +519,7 @@
             color: white;
         }
 
-        /* --- FAQ (ACCORDION) --- */
+        /* --- FAQ --- */
         .faq-section {
             max-width: 800px;
             margin: 60px auto;
@@ -685,7 +697,6 @@
             transform: translateY(-3px);
         }
 
-        /* Customizing intl-tel-input */
         .iti {
             width: 100%;
         }
@@ -696,13 +707,12 @@
             border: 1px solid #444;
         }
 
-        /* --- RESPONSIVE MEDIA QUERIES (ASOSIY O'ZGARISHLAR) --- */
-        
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .header__content h1 {
                 font-size: 3rem;
             }
-            
+
             .header__content {
                 text-align: center;
                 margin-left: 0;
@@ -722,21 +732,20 @@
             .boss-text {
                 width: 100%;
             }
-            
+
             .boss-img-container img {
                 height: 400px;
             }
         }
 
         @media (max-width: 768px) {
-            /* Navbar Mobile Style */
             .navbar-links {
                 position: fixed;
                 top: 80px;
                 right: -100%;
-                width: 100%; /* To'liq ekran */
+                width: 100%;
                 height: calc(100vh - 80px);
-                background: rgba(0,0,0,0.95); /* Qoraytirilgan fon */
+                background: rgba(0, 0, 0, 0.95);
                 flex-direction: column;
                 align-items: center;
                 justify-content: start;
@@ -748,9 +757,9 @@
             .navbar-links.active {
                 right: 0;
             }
-            
+
             .nav-link {
-                font-size: 1.5rem; /* Menyu yozuvlari kattaroq */
+                font-size: 1.5rem;
                 margin-bottom: 20px;
             }
 
@@ -758,32 +767,28 @@
                 display: flex;
             }
 
-            /* Header Mobile */
             .header__content h1 {
                 font-size: 2.2rem;
             }
-            
+
             .header__content p {
                 font-size: 1rem;
             }
-            
-            /* Stats Mobile */
+
             .stat-number {
                 font-size: 3rem;
                 -webkit-text-stroke: 1px var(--primary-color);
             }
-            
-            /* Map */
+
             #chartdiv {
                 height: 350px;
             }
 
-            /* Footer Mobile */
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .footer-col {
                 min-width: 100%;
             }
@@ -791,53 +796,51 @@
             .social-icons {
                 justify-content: center;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .info-title h2 {
                 font-size: 2.2rem;
             }
         }
 
         @media (max-width: 480px) {
-            /* Kichik telefonlar uchun (iPhone SE, Pixel va h.k) */
-            
             .header__content h1 {
                 font-size: 1.8rem;
             }
-            
+
             .logo-name {
                 font-size: 18px;
             }
-            
+
             .primary-btn {
                 padding: 12px 30px;
                 font-size: 14px;
             }
-            
+
             .section-title {
                 font-size: 1.5rem;
             }
-            
+
             .boss-img-container img {
-                height: 300px; /* Rasm balandligini kamaytirish */
+                height: 300px;
             }
-            
+
             .team-member {
-                width: 200px; /* Jamoa rasmlarini kichraytirish */
+                width: 200px;
                 height: 250px;
             }
-            
+
             .stats-container {
                 gap: 30px;
             }
-            
+
             .stat-number {
                 font-size: 2.5rem;
             }
-            
+
             .footer-cta h2 {
                 font-size: 1.8rem;
             }
@@ -851,7 +854,7 @@
             <img class="logo-img" src="./asist/logo/logo.png" alt="logo">
             <div class="logo-name">ArchDoston</div>
         </div>
-        
+
         <div class="menu-toggle" id="mobileMenuBtn">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -943,8 +946,7 @@
 
         <section id="boss" class="boss-section">
             <div class="boss-img-container fade-in">
-                <img src="./asist/boss/bos.JPG"
-                    alt="Boss">
+                <img src="./asist/boss/bos.JPG" alt="Boss">
             </div>
             <div class="boss-text fade-in">
                 <h3>Bizning Falsafamiz</h3>
@@ -964,39 +966,29 @@
             <h2 class="section-title">JAMOA</h2>
             <div class="marquee-container">
                 <div class="marquee-content">
-                    <div class="team-member"><img
-                            src="./asist/komanda/Dostonaka.jpg"
-                            alt="Team 1"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Jurabek.jpg"
-                            alt="Team 2"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Islombek.jpg"
-                            alt="Team 3"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Sanjarbek.jpg"
-                            alt="Team 4"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Umidjon.jpg"
-                            alt="Team 5"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Mohichehra.jpg"
-                            alt="Team 6"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Nigora.jpg"
-                            alt="Team 1"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Azizbek.jpg"
-                            alt="Team 2"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Hojiakbar.jpg"
-                            alt="Team 3"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Javoxir.jpg"
-                            alt="Team 4"></div>
-                    <div class="team-member"><img
-                            src="./asist/komanda/Boburbek.jpg"
-                            alt="Team 5"></div>
+                    <div class="team-member"><img src="./asist/komanda/Dostonaka.jpg" alt="Team 1"></div>
+                    <div class="team-member"><img src="./asist/komanda/Jurabek.jpg" alt="Team 2"></div>
+                    <div class="team-member"><img src="./asist/komanda/Islombek.jpg" alt="Team 3"></div>
+                    <div class="team-member"><img src="./asist/komanda/Sanjarbek.jpg" alt="Team 4"></div>
+                    <div class="team-member"><img src="./asist/komanda/Umidjon.jpg" alt="Team 5"></div>
+                    <div class="team-member"><img src="./asist/komanda/Mohichehra.jpg" alt="Team 6"></div>
+                    <div class="team-member"><img src="./asist/komanda/Nigora.jpg" alt="Team 1"></div>
+                    <div class="team-member"><img src="./asist/komanda/Azizbek.jpg" alt="Team 2"></div>
+                    <div class="team-member"><img src="./asist/komanda/Hojiakbar.jpg" alt="Team 3"></div>
+                    <div class="team-member"><img src="./asist/komanda/Javoxir.jpg" alt="Team 4"></div>
+                    <div class="team-member"><img src="./asist/komanda/Boburbek.jpg" alt="Team 5"></div>
+
+                    <div class="team-member"><img src="./asist/komanda/Dostonaka.jpg" alt="Team 1"></div>
+                    <div class="team-member"><img src="./asist/komanda/Jurabek.jpg" alt="Team 2"></div>
+                    <div class="team-member"><img src="./asist/komanda/Islombek.jpg" alt="Team 3"></div>
+                    <div class="team-member"><img src="./asist/komanda/Sanjarbek.jpg" alt="Team 4"></div>
+                    <div class="team-member"><img src="./asist/komanda/Umidjon.jpg" alt="Team 5"></div>
+                    <div class="team-member"><img src="./asist/komanda/Mohichehra.jpg" alt="Team 6"></div>
+                    <div class="team-member"><img src="./asist/komanda/Nigora.jpg" alt="Team 1"></div>
+                    <div class="team-member"><img src="./asist/komanda/Azizbek.jpg" alt="Team 2"></div>
+                    <div class="team-member"><img src="./asist/komanda/Hojiakbar.jpg" alt="Team 3"></div>
+                    <div class="team-member"><img src="./asist/komanda/Javoxir.jpg" alt="Team 4"></div>
+                    <div class="team-member"><img src="./asist/komanda/Boburbek.jpg" alt="Team 5"></div>
                 </div>
             </div>
 
@@ -1122,8 +1114,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
-            // 1. MOBIL MENU
             const menuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navbarLinks');
             const links = document.querySelectorAll('.nav-link');
@@ -1133,7 +1123,6 @@
                 menuBtn.classList.toggle('open');
             });
 
-            // Link bosilganda menuni yopish
             links.forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -1141,11 +1130,7 @@
                 });
             });
 
-            // 2. SCROLL ANIMATION (FADE-IN)
-            const observerOptions = {
-                threshold: 0.1
-            };
-
+            const observerOptions = { threshold: 0.1 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1154,11 +1139,8 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-            // 3. ACCORDION
             const accordions = document.querySelectorAll('.accordion-header');
             accordions.forEach(acc => {
                 acc.addEventListener('click', function () {
@@ -1172,7 +1154,6 @@
                 });
             });
 
-            // 4. PHONE INPUT
             const phoneInput = document.querySelector("#phone");
             if (phoneInput && window.intlTelInput) {
                 window.intlTelInput(phoneInput, {
@@ -1183,57 +1164,42 @@
                 });
             }
 
-            // 5. PARALLAX EFFECT (Optimallashtirilgan)
             const header = document.querySelector("header");
             window.addEventListener("scroll", () => {
-                if (window.innerWidth > 992) { // Faqat katta ekranlarda
+                if (window.innerWidth > 992) {
                     let offset = window.scrollY;
                     header.style.backgroundPositionY = offset * 0.5 + "px";
                 }
             });
 
-            // 6. AMCHARTS MAP
             if (typeof am5 !== 'undefined') {
                 am5.ready(function () {
                     var root = am5.Root.new("chartdiv");
                     root.setThemes([am5themes_Animated.new(root)]);
-
                     var chart = root.container.children.push(am5map.MapChart.new(root, {
                         panX: "rotateX",
                         panY: "none",
                         projection: am5map.geoMercator(),
                         homeGeoPoint: { longitude: 64.5, latitude: 41.3 }
                     }));
-
-                    var polygonSeries = chart.series.push(
-                        am5map.MapPolygonSeries.new(root, {
-                            geoJSON: am5geodata_worldLow,
-                            exclude: ["AQ"],
-                            fill: am5.color(0x282828),
-                            stroke: am5.color(0x000000)
-                        })
-                    );
-
+                    var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                        geoJSON: am5geodata_worldLow,
+                        exclude: ["AQ"],
+                        fill: am5.color(0x282828),
+                        stroke: am5.color(0x000000)
+                    }));
                     polygonSeries.mapPolygons.template.setAll({
                         tooltipText: "{name}",
                         interactive: true,
                         fill: am5.color(0x282828),
                         templateField: "polygonSettings"
                     });
-
-                    polygonSeries.mapPolygons.template.states.create("hover", {
-                        fill: am5.color(0x2424fa)
-                    });
-
-                    // Nuqtalar (Bayroqlar o'rnidagi doiralar)
-                    var bubbleSeries = chart.series.push(
-                        am5map.MapPointSeries.new(root, {
-                            valueField: "value",
-                            calculateAggregates: true,
-                            polygonIdField: "id"
-                        })
-                    );
-
+                    polygonSeries.mapPolygons.template.states.create("hover", { fill: am5.color(0x2424fa) });
+                    var bubbleSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+                        valueField: "value",
+                        calculateAggregates: true,
+                        polygonIdField: "id"
+                    }));
                     bubbleSeries.bullets.push(function (root, series, dataItem) {
                         return am5.Bullet.new(root, {
                             sprite: am5.Circle.new(root, {
@@ -1245,7 +1211,6 @@
                             })
                         });
                     });
-
                     bubbleSeries.data.setAll([
                         { id: "UZ", name: "UZBEKISTAN", value: 100, latitude: 41.3775, longitude: 64.5853 },
                         { id: "KZ", name: "KAZAKHSTAN", value: 100, latitude: 48.0196, longitude: 66.9237 },
@@ -1253,7 +1218,6 @@
                         { id: "TJ", name: "TAJIKISTAN", value: 100, latitude: 38.861, longitude: 71.2761 },
                         { id: "RU", name: "RUSSIA", value: 100, latitude: 61.5240, longitude: 105.3188 }
                     ]);
-
                     chart.appear(1000, 100);
                 });
             }
