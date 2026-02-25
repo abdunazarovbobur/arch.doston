@@ -155,30 +155,30 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
 
 
 
-// Raqamlar animatsiyasi (Counter)
-function animateNumbers() {
-    const stats = document.querySelectorAll('.stat-number');
-    stats.forEach(stat => {
-        const target = +stat.getAttribute('data-target');
-        const count = +stat.innerText;
-        const speed = 200; // Tezlikni sozlash
-        const increment = target / speed;
+// // Raqamlar animatsiyasi (Counter)
+// function animateNumbers() {
+//     const stats = document.querySelectorAll('.stat-number');
+//     stats.forEach(stat => {
+//         const target = +stat.getAttribute('data-target');
+//         const count = +stat.innerText;
+//         const speed = 200; // Tezlikni sozlash
+//         const increment = target / speed;
 
-        if (count < target) {
-            stat.innerText = Math.ceil(count + increment);
-            setTimeout(animateNumbers, 1);
-        } else {
-            stat.innerText = target;
-        }
-    });
-}
+//         if (count < target) {
+//             stat.innerText = Math.ceil(count + increment);
+//             setTimeout(animateNumbers, 1);
+//         } else {
+//             stat.innerText = target;
+//         }
+//     });
+// }
 
-// Ekranga kelganda ishga tushishi uchun Observer ga qo'shamiz
-const statsSection = document.querySelector('.stats-container');
-const statsObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-        animateNumbers();
-    }
-}, { threshold: 0.5 });
+// // Ekranga kelganda ishga tushishi uchun Observer ga qo'shamiz
+// const statsSection = document.querySelector('.stats-container');
+// const statsObserver = new IntersectionObserver((entries) => {
+//     if (entries[0].isIntersecting) {
+//         animateNumbers();
+//     }
+// }, { threshold: 0.5 });
 
-if(statsSection) statsObserver.observe(statsSection);
+// if(statsSection) statsObserver.observe(statsSection);

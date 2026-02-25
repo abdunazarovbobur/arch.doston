@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 const TOKEN = '8785346107:AAEEVuhBZw2fbWgDL3HPus15zM1q3u62TxA'; 
-const CHAT_ID = '866216741'; 
+const CHAT_IDS = ['866216741', 'IKKINCHI_ID'];
 const bot = new TelegramBot(TOKEN, { polling: false });
 
 // API Endpoint
@@ -20,11 +20,17 @@ app.post('/api/contact', (req, res) => {
     const { name, phone, email } = req.body;
     const message = `🔔 **Yangi ariza!**\n👤 **Ism:** ${name}\n📞 **Tel:** ${phone}\n📧 **Email:** ${email}`;
 
-    bot.sendMessage(CHAT_ID, message, { parse_mode: 'Markdown' })
-        .then(() => res.status(200).json({ message: "Yuborildi" }))
+    // 2. Har bir ID uchun xabar yuboramiz
+    const sendPromises = CHAT_IDS.map(id => {
+        return bot.sendMessage(id, message, { parse_mode: 'Markdown' });
+    });
+
+    // Barcha xabarlar yuborilishini kutamiz
+    Promise.all(sendPromises)
+        .then(() => res.status(200).json({ message: "Barcha adminlarga yuborildi" }))
         .catch((error) => {
             console.error("Telegram xatosi:", error);
-            res.status(500).json({ error: "Telegram xatosi" });
+            res.status(500).json({ error: "Xabar yuborishda xatolik" });
         });
 });
 
