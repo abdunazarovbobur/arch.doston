@@ -28,6 +28,8 @@ app.post('/api/contact', (req, res) => {
         });
 });
 
+app.use(express.static(path.join(__dirname)));
+
 // Asosiy sahifa
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
