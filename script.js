@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
 document.querySelector('.contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -127,23 +126,25 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     const iti = window.intlTelInputGlobals.getInstance(phoneInput);
     const phone = iti.getNumber(); 
 
-    const data = { name, phone, email }; // O'zgaruvchi nomi 'data'
+    // O'zgaruvchi nomi: data
+    const data = { name, phone, email };
 
     try {
-        const response = await fetch('/api/contact', {  // Endpoint server.js bilan bir xil bo'lishi kerak
+        // Manzilni /api/contact ga o'zgartirdik
+        const response = await fetch('/api/contact', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data) // 'formData' emas, 'data'
+            body: JSON.stringify(data) // formData emas, data deb yozildi
         });
 
         if (response.ok) {
-            alert("Xabar yuborildi!");
+            alert("Rahmat! Tez orada siz bilan bog'lanamiz.");
             this.reset();
         } else {
-            alert("Xatolik yuz berdi.");
+            alert("Xatolik: Server xabarni qabul qilmadi.");
         }
-    } catch (error) {
-        console.error("Error:", error);
+    } catch (err) {
+        console.error("Fetch xatosi:", err);
         alert("Server bilan bog'lanishda xato!");
     }
 });
