@@ -1,23 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
 const PORT = 3000;
 
-// Telegram sozlamalari
-const TOKEN = '8785346107:AAEHMRv3LlHDrXJAo5CFDJUkMGuAWmL1wCc'; // BotFather'dan olingan token
-const CHAT_ID = '8785346107';     // Sizning chat ID'ngiz
+// DIQQAT: TOKEN va CHAT_ID ni qayta tekshiring
+const TOKEN = '8785346107:AAEEVuhBZw2fbWgDL3HPus15zM1q3u62TxA'; 
+const CHAT_ID = '866216741'; // @userinfobot bergan raqamni aynan shu yerga yozing
+
 const bot = new TelegramBot(TOKEN, { polling: false });
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.post('/api/contact', (req, res) => {
     const { name, phone, email } = req.body;
 
-    // Telegram'ga yuboriladigan xabar matni
     const message = `
 🔔 **Yangi ariza!**
 👤 **Ism:** ${name}
@@ -27,14 +26,15 @@ app.post('/api/contact', (req, res) => {
 
     bot.sendMessage(CHAT_ID, message, { parse_mode: 'Markdown' })
         .then(() => {
-            res.status(200).json({ message: "Xabar Telegramga yuborildi!" });
+            console.log("✅ Xabar muvaffaqiyatli ketdi!");
+            res.status(200).json({ message: "Yuborildi" });
         })
         .catch((error) => {
-            console.error(error);
-            res.status(500).json({ message: "Xabar yuborishda xatolik yuz berdi." });
+            console.error("❌ Telegram xatosi:", error.response ? error.response.body : error.message);
+            res.status(500).json({ error: error.message });
         });
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server http://localhost:${PORT} manzilida ishlamoqda`);
 });

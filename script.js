@@ -121,8 +121,12 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     e.preventDefault();
 
     const name = this.querySelector('input[placeholder="Ismingizni kiriting"]').value;
-    const phone = document.querySelector("#phone").value;
     const email = this.querySelector('input[type="email"]').value;
+    
+    // Telefon raqamini kutubxonadan to'g'ri olish
+    const phoneInput = document.querySelector("#phone");
+    const iti = window.intlTelInputGlobals.getInstance(phoneInput);
+    const phone = iti.getNumber(); 
 
     const data = { name, phone, email };
 
@@ -137,10 +141,10 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
             alert("Rahmat! Tez orada siz bilan bog'lanamiz.");
             this.reset();
         } else {
-            alert("Xatolik yuz berdi.");
+            alert("Xatolik: Server xabarni qabul qilmadi.");
         }
     } catch (err) {
-        console.error(err);
-        alert("Server bilan bog'lanishda xato!");
+        console.error("Fetch xatosi:", err);
+        alert("Server bilan bog'lanishda xato! Serverni yoqqaningizni tekshiring.");
     }
 });
