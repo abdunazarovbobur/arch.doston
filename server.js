@@ -18,7 +18,7 @@ const bot = new TelegramBot(TOKEN, { polling: false });
 // API Endpoint
 app.post('/api/contact', (req, res) => {
     const { name, phone, email } = req.body;
-    const message = `🔔 **Yangi ariza!**\n👤 **Ism:** ${name}\n📞 **Tel:** ${phone}\n📧 **Email:** ${email}`;
+    const message = `🔔 **Yangi ariza!**\n👤 **Ism:** ${name}\n📞 **Tel:** ${phone}\n📧 **Izox:** ${email}`;
 
     // 2. Har bir ID uchun xabar yuboramiz
     const sendPromises = CHAT_IDS.map(id => {

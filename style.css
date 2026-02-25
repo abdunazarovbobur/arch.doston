@@ -164,7 +164,7 @@ header {
   min-height: 600px;
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(./asist/backimg/bir.avif);
+    url(./asist/backimg/glavni.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -248,7 +248,7 @@ header {
   background-color: var(--dark-light);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(./asist/backimg/ikki.avif);
+    url(./asist/backimg/glavni2.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -422,7 +422,7 @@ header {
 /* --- TEAM (CHEKSIZ CAROUSEL SOZLAMALARI) --- */
 .team-section {
   padding: 60px 0;
-  background-color: var(--dark-light);
+  background-color: var(--dark-bg);
   overflow: hidden;
 }
 
@@ -611,8 +611,10 @@ footer {
 
 .input-group label {
   color: #aaa;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 .contact-form input {
@@ -631,6 +633,20 @@ footer {
   border-color: var(--primary-color);
 }
 
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+.input-group textarea{
+  width: 555px;
+  height: 80px;
+  border-radius: 20px;
+  padding: 10px;
+  border: none;
+  background-color: #222;
+  color: white;
+  font-size: 17px;
+}
 .footer-bottom {
   background: #0a0a0a;
   padding: 40px 5%;
