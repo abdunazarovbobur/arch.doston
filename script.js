@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     initialCountry: "uz",
                     separateDialCode: true,
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
+                }); 
             }
 
             const header = document.querySelector("header");
