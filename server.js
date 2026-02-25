@@ -3,7 +3,8 @@ const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server port: ${PORT}`));
 
 // DIQQAT: TOKEN va CHAT_ID ni qayta tekshiring
 const TOKEN = '8785346107:AAEEVuhBZw2fbWgDL3HPus15zM1q3u62TxA'; 

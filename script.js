@@ -131,7 +131,7 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     const data = { name, phone, email };
 
     try {
-        const response = await fetch('http://localhost:3000/api/contact', {
+        const response = await fetch('https://arch-doston.onrender.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
