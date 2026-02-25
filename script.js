@@ -107,3 +107,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
+
+
+
+
+
+
+
+
+
+
+document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = this.querySelector('input[placeholder="Ismingizni kiriting"]').value;
+    const phone = document.querySelector("#phone").value;
+    const email = this.querySelector('input[type="email"]').value;
+
+    const data = { name, phone, email };
+
+    try {
+        const response = await fetch('http://localhost:3000/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert("Rahmat! Tez orada siz bilan bog'lanamiz.");
+            this.reset();
+        } else {
+            alert("Xatolik yuz berdi.");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Server bilan bog'lanishda xato!");
+    }
+});
