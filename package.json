@@ -1,16 +1,26 @@
 {
-  "name": "arch.doston",
+  "name": "new-archdoston",
   "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {git add .
+  "main": "script.js",
+  "scripts": {
     "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdunazarovbobur/arch.doston.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdunazarovbobur/arch.doston/issues"
+  },
+  "homepage": "https://github.com/abdunazarovbobur/arch.doston#readme",
   "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.2"
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "node-telegram-bot-api": "^0.67.0"
   }
 }

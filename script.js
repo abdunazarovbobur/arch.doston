@@ -123,28 +123,27 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     const name = this.querySelector('input[placeholder="Ismingizni kiriting"]').value;
     const email = this.querySelector('input[type="email"]').value;
     
-    // Telefon raqamini kutubxonadan to'g'ri olish
     const phoneInput = document.querySelector("#phone");
     const iti = window.intlTelInputGlobals.getInstance(phoneInput);
     const phone = iti.getNumber(); 
 
-    const data = { name, phone, email };
+    const data = { name, phone, email }; // O'zgaruvchi nomi 'data'
 
     try {
-        const response = await fetch('/send-email', { 
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-})
+        const response = await fetch('/api/contact', {  // Endpoint server.js bilan bir xil bo'lishi kerak
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data) // 'formData' emas, 'data'
+        });
 
         if (response.ok) {
-            alert("Rahmat! Tez orada siz bilan bog'lanamiz.");
+            alert("Xabar yuborildi!");
             this.reset();
         } else {
-            alert("Xatolik: Server xabarni qabul qilmadi.");
+            alert("Xatolik yuz berdi.");
         }
-    } catch (err) {
-        console.error("Fetch xatosi:", err);
-        alert("Server bilan bog'lanishda xato! Serverni yoqqaningizni tekshiring.");
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Server bilan bog'lanishda xato!");
     }
 });
