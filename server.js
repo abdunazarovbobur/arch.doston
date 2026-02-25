@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 const TOKEN = '8785346107:AAEEVuhBZw2fbWgDL3HPus15zM1q3u62TxA'; 
-const CHAT_IDS = ['866216741', 'IKKINCHI_ID'];
+const CHAT_IDS = ['866216741', '5788055350'];
 const bot = new TelegramBot(TOKEN, { polling: false });
 
 // API Endpoint
